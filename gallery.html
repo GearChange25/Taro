@@ -208,13 +208,39 @@ input[type="file"] {
 const gallery = document.getElementById("gallery");
 const fileInput = document.getElementById("fileInput");
 
-/* LOAD SAVED IMAGES */
-let savedImages = JSON.parse(localStorage.getItem("shivutaro_gallery")) || [];
+/* =========================
+   MANUAL BACKEND IMAGES
+========================= */
+const backendImages = [
+    "1.jpeg",
+    "2.jpeg",
+    "3.jpeg",
+    "4.jpeg",
+    "5.jpeg",
+    "6.jpeg",
+    "7.jpeg",
+    "8.jpeg",
+    "9.jpeg",
+    "10.jpeg",
+    "11.jpeg",
+    "12.jpeg",
+    "13.jpeg",
+    "14.jpeg"
+];
+/* =========================
+   LOCAL STORAGE IMAGES
+========================= */
+let savedImages =
+    JSON.parse(localStorage.getItem("shivutaro_gallery")) || [];
 
+/* =========================
+   RENDER FUNCTION
+========================= */
 function renderImage(src) {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.onclick = () => openModal(card);
+
+    card.onclick = () => openModal(src);
 
     card.innerHTML = `
         <img src="${src}">
@@ -225,34 +251,53 @@ function renderImage(src) {
     gallery.prepend(card);
 }
 
-/* INIT LOAD */
+/* =========================
+   LOAD BACKEND IMAGES
+========================= */
+backendImages.forEach(renderImage);
+
+/* =========================
+   LOAD SAVED UPLOADS
+========================= */
 savedImages.forEach(renderImage);
 
-/* UPLOAD */
+/* =========================
+   UPLOAD NEW IMAGES
+========================= */
 fileInput.addEventListener("change", (event) => {
+
     const files = event.target.files;
 
     for (let file of files) {
+
         const reader = new FileReader();
 
         reader.onload = (e) => {
+
             const imgSrc = e.target.result;
 
+            /* SHOW IMAGE */
             renderImage(imgSrc);
 
+            /* SAVE TO STORAGE */
             savedImages.push(imgSrc);
-            localStorage.setItem("shivutaro_gallery", JSON.stringify(savedImages));
+
+            localStorage.setItem(
+                "shivutaro_gallery",
+                JSON.stringify(savedImages)
+            );
         };
 
         reader.readAsDataURL(file);
     }
 });
 
-/* MODAL */
-function openModal(card) {
-    const img = card.querySelector("img").src;
+/* =========================
+   MODAL
+========================= */
+function openModal(src) {
     document.getElementById("modal").style.display = "flex";
-    document.getElementById("modalImg").src = img;
+    document.getElementById("modalImg").src = src;
 }
 
 function closeModal() {
