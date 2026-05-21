@@ -1,0 +1,212 @@
+<!-- Save this file as imp.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Favourite Person 💖</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#ffffff,#dff6ff,#b8e8ff);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    width:100%;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#111;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#55c7ff;
+}
+
+.nav-links{
+    display:flex;
+    gap:18px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#111;
+    background:#fff;
+    padding:12px 18px;
+    border-radius:14px;
+    transition:0.3s;
+    font-weight:600;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.nav-links a i{
+    margin-right:8px;
+}
+
+.nav-links a:hover{
+    background:#55c7ff;
+    color:white;
+    transform:translateY(-2px);
+}
+
+/* MAIN CARD */
+.container{
+    width:100%;
+    min-height:85vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.card{
+    width:100%;
+    max-width:1100px;
+    background:#f3e2a0;
+    border-radius:30px;
+    padding:50px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.text{
+    font-size:52px;
+    line-height:1.6;
+    color:#2f1d00;
+    font-family: Georgia, serif;
+    z-index:2;
+    position:relative;
+}
+
+.text span{
+    display:block;
+}
+
+/* Bear Images */
+.bear-left{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    width:190px;
+    animation:float 3s ease-in-out infinite;
+}
+
+.bear-right{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    width:230px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .text{
+        font-size:30px;
+    }
+
+    .card{
+        padding:30px 20px 220px;
+    }
+
+    .bear-left{
+        width:120px;
+    }
+
+    .bear-right{
+        width:150px;
+    }
+
+    nav{
+        padding:15px 18px;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Shivu<span>Taro</span></div>
+
+    <div class="nav-links">
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
+
+        <a href="feeling.html">
+            <i class="fa-solid fa-bell"></i> Important
+        </a>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<div class="container">
+
+    <div class="card">
+
+        <div class="text">
+            <span>You are my ... </span>
+            <span>favourite notification 🥺❤️</span>
+            <span>favourite person 🫶</span>
+            <span>favourite reason to smile 🥰</span>
+            <span>favourite part of my day 🌸</span>
+        </div>
+
+        <!-- Bear Images -->
+        <img src="cat1.jpg" class="bear-left">
+        <img src="teddy1.jpg" class="bear-right">
+
+    </div>
+
+</div>
+
+</body>
+</html>
