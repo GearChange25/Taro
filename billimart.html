@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shivutaro's Pookie Cat Market</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(to bottom,#fff7fb,#ffeef8,#fefcff);
+    overflow-x:hidden;
+    color:#5b4b57;
+}
+
+/* FLOATING HEARTS */
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.heart{
+    position:absolute;
+    bottom:-100px;
+    width:35px;
+    opacity:0.6;
+    animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:0.7;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(16px);
+    z-index:1000;
+    border-bottom:1px solid rgba(255,192,203,0.3);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+    color:#ff7eb5;
+    letter-spacing:1px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#ff6ba7;
+    background:white;
+    padding:10px 20px;
+    border-radius:30px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    background:#ffd6ea;
+    transform:translateY(-2px);
+}
+
+/* HERO SECTION */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    position:relative;
+    z-index:2;
+    padding:120px 20px 50px;
+}
+
+.hero h1{
+    font-size:72px;
+    color:#ff7eb5;
+    margin-bottom:20px;
+    animation:fadeDown 1s ease;
+}
+
+.hero p{
+    font-size:22px;
+    color:#8a6b7d;
+    max-width:700px;
+    line-height:1.8;
+    margin-bottom:35px;
+    animation:fadeUp 1s ease;
+}
+
+.hero-btn{
+    padding:16px 35px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(to right,#ffb7d5,#ffcce4);
+    color:#7a4b62;
+    font-size:18px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.4s;
+    box-shadow:0 10px 30px rgba(255,182,193,0.3);
+}
+
+.hero-btn:hover{
+    transform:scale(1.08);
+}
+
+/* MARKET */
+
+.market{
+    padding:80px 30px 120px;
+    position:relative;
+    z-index:2;
+}
+
+.market-title{
+    text-align:center;
+    font-size:52px;
+    color:#ff7eb5;
+    margin-bottom:50px;
+}
+
+.cat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:35px;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* CAT CARD */
+
+.cat-card{
+    background:rgba(255,255,255,0.75);
+    border-radius:30px;
+    overflow:hidden;
+    backdrop-filter:blur(12px);
+    transition:0.4s;
+    box-shadow:0 10px 30px rgba(255,182,193,0.15);
+    border:1px solid rgba(255,255,255,0.5);
+    position:relative;
+}
+
+.cat-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 20px 40px rgba(255,182,193,0.3);
+}
+
+.cat-card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.cat-card:hover img{
+    transform:scale(1.05);
+}
+
+.cat-info{
+    padding:25px;
+}
+
+.cat-info h3{
+    color:#ff6ba7;
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+.cat-info p{
+    color:#7d6470;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.buy-btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:25px;
+    background:linear-gradient(to right,#ffc3dd,#ffd8ea);
+    color:#7a4b62;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.buy-btn:hover{
+    transform:scale(1.03);
+    background:linear-gradient(to right,#ffb2d3,#ffc9e1);
+}
+
+/* BADGE */
+
+.badge{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:white;
+    color:#ff6ba7;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,182,193,0.2);
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(255,240,248,0.55);
+    backdrop-filter:blur(10px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+}
+
+.popup-box{
+    background:white;
+    width:90%;
+    max-width:420px;
+    padding:35px;
+    border-radius:35px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 20px 50px rgba(255,182,193,0.3);
+    animation:popupUp 0.4s ease;
+}
+
+.popup-cat{
+    width:180px;
+    border-radius:25px;
+    margin-bottom:20px;
+}
+
+.popup-box h2{
+    color:#ff72ab;
+    margin-bottom:15px;
+    font-size:34px;
+}
+
+.popup-box p{
+    color:#7c6470;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.close-popup{
+    position:absolute;
+    top:18px;
+    right:22px;
+    font-size:32px;
+    color:#ff72ab;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+    padding:40px;
+    text-align:center;
+    background:rgba(255,255,255,0.6);
+    color:#9b7b8a;
+    position:relative;
+    z-index:2;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes popupUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(0.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .market-title{
+        font-size:38px;
+    }
+
+    .navbar{
+        padding:15px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+
+<div class="hearts">
+
+    <img src="logo.png" class="heart" style="left:5%; animation-duration:12s;">
+    <img src="logo.png" class="heart" style="left:15%; animation-duration:15s;">
+    <img src="logo.png" class="heart" style="left:28%; animation-duration:10s;">
+    <img src="logo.png" class="heart" style="left:42%; animation-duration:14s;">
+    <img src="logo.png" class="heart" style="left:57%; animation-duration:11s;">
+    <img src="logo.png" class="heart" style="left:70%; animation-duration:16s;">
+    <img src="logo.png" class="heart" style="left:85%; animation-duration:13s;">
+
+</div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">Shivutaro's PookieMart ✨</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Cute Cat Market 🐾</h1>
+
+    <p>
+        Welcome to the softest, cutest and most adorable cat market ever.
+        Explore fluffy pookies, dreamy vibes and magical kitty aesthetics ✨
+    </p>
+
+    <button class="hero-btn" onclick="scrollToMarket()">
+        Explore Pookies 💖
+    </button>
+
+</section>
+
+<!-- MARKET -->
+
+<section class="market">
+
+    <h2 class="market-title">
+        Featured Pookie Cats
+    </h2>
+
+    <div class="cat-grid">
+
+        <!-- CAT 1 -->
+
+        <div class="cat-card">
+
+            <div class="badge">Popular</div>
+
+            <img src="cat1.jpg">
+
+            <div class="cat-info">
+
+                <h3>Snow Pookie</h3>
+
+                <p>Soft fluffy cloud baby with cozy sleepy vibes.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 2 -->
+
+        <div class="cat-card">
+
+            <img src="cat2.jpg">
+
+            <div class="cat-info">
+
+                <h3>Pink Bean</h3>
+
+                <p>Tiny adorable kitten full of comfort energy.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 3 -->
+
+        <div class="cat-card">
+
+            <div class="badge">New</div>
+
+            <img src="cat3.jpg">
+
+            <div class="cat-info">
+
+                <h3>Milky Mochi</h3>
+
+                <p>The ultimate softie with dreamy eyes.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 4 -->
+
+        <div class="cat-card">
+
+            <img src="cat4.jpg">
+
+            <div class="cat-info">
+
+                <h3>Blueberry Cat</h3>
+
+                <p>Calm blue vibes and endless cuddles.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 5 -->
+
+        <div class="cat-card">
+
+            <img src="cat5.jpg">
+
+            <div class="cat-info">
+
+                <h3>Baby Chonk</h3>
+
+                <p>Round fluffy potato with maximum happiness.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 6 -->
+
+        <div class="cat-card">
+
+            <div class="badge">Cute</div>
+
+            <img src="cat6.png">
+
+            <div class="cat-info">
+
+                <h3>Peach Puff</h3>
+
+                <p>Sweet little peach-colored pookie.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 7 -->
+
+        <div class="cat-card">
+
+            <img src="cat7.jpg">
+
+            <div class="cat-info">
+
+                <h3>Angel Bean</h3>
+
+                <p>Pure soft energy wrapped into a kitty.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 8 -->
+
+        <div class="cat-card">
+
+            <img src="cat8.jpg">
+
+            <div class="cat-info">
+
+                <h3>Moon Kitty</h3>
+
+                <p>Sleepy moonlight aesthetic cat vibes.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 9 -->
+
+        <div class="cat-card">
+
+            <img src="cat9.jpg">
+
+            <div class="cat-info">
+
+                <h3>Bubble Baby</h3>
+
+                <p>Tiny little kitty full of pink cloud vibes.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAT 10 -->
+
+        <div class="cat-card">
+
+            <div class="badge">Limited</div>
+
+            <img src="cat10.webp">
+
+            <div class="cat-info">
+
+                <h3>Dreamy Paws</h3>
+
+                <p>Magical pookie cat with comfy energy.</p>
+
+                <button class="buy-btn" onclick="openPopup()">
+                    Adopt Me 💖
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-box">
+
+        <span class="close-popup" onclick="closePopup()">
+            &times;
+        </span>
+
+        <img src="cat.png" class="popup-cat">
+
+        <h2>Pookie Cat 🐾</h2>
+
+        <p>
+            The cat already loves you and is waiting for you 🥺💖
+            Please take the little pookie home and give unlimited cuddles ✨
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    
+
+</footer>
+
+<script>
+
+/* POPUP */
+
+function openPopup(){
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+/* SCROLL */
+
+function scrollToMarket(){
+
+    document.querySelector(".market").scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>

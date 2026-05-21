@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivutaro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(to bottom, #ffffff, #dff4ff);
+    color:#1b3c59;
+    overflow-x:hidden;
+}
+
+/* FLOWERS */
+.flowers{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.flower{
+    position:absolute;
+    top:-100px;
+    width:40px;
+    animation:fall linear infinite;
+    opacity:0.8;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-100px) rotate(0deg);
+    }
+    100%{
+        transform:translateY(120vh) rotate(360deg);
+    }
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 35px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid rgba(173,216,230,0.4);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#5baed6;
+}
+
+.home-btn{
+    text-decoration:none;
+    background:#7ccfff;
+    color:white;
+    padding:10px 22px;
+    border-radius:25px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.home-btn:hover{
+    background:#5bbdf5;
+}
+
+/* HERO SECTION */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:25px;
+    color:#5baed6;
+}
+
+.message-btn img{
+    width:260px;
+    border-radius:25px;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 10px 30px rgba(91,174,214,0.3);
+}
+
+.message-btn img:hover{
+    transform:scale(1.06);
+}
+
+/* POPUP */
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:550px;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    display:none;
+    z-index:2000;
+    box-shadow:0 15px 40px rgba(91,174,214,0.3);
+    animation:popupFade 0.4s ease;
+}
+
+.popup-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.popup-header h2{
+    color:#5baed6;
+    font-size:30px;
+}
+
+.close{
+    font-size:35px;
+    cursor:pointer;
+    color:#5baed6;
+}
+
+.popup p{
+    font-size:19px;
+    line-height:1.9;
+    font-style:italic;
+    color:#35556d;
+    transform:skew(-3deg);
+}
+
+/* PLAYLIST SECTION */
+.playlist{
+    min-height:100vh;
+    padding:100px 20px;
+    position:relative;
+    z-index:2;
+}
+
+.playlist h2{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:40px;
+    color:#69bce7;
+}
+
+/* CONTAINER */
+.playlist-container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:30px;
+    align-items:center;
+}
+
+/* CARD */
+.playlist-card{
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:30px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(100,180,255,0.2);
+    transition:0.4s;
+}
+
+.playlist-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(100,180,255,0.3);
+}
+
+.playlist-cover{
+    width:100%;
+    border-radius:22px;
+    margin-bottom:20px;
+}
+
+.playlist-info h3{
+    font-size:32px;
+    margin-bottom:10px;
+    color:#4e8fb6;
+}
+
+.playlist-info p{
+    color:#557085;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+/* SPOTIFY BUTTON */
+.spotify-btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:linear-gradient(to right,#7ed6ff,#4cb8ff);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.spotify-btn:hover{
+    transform:scale(1.05);
+    background:linear-gradient(to right,#5bc7ff,#2caeff);
+}
+
+/* PLAYER */
+.spotify-player{
+    background:rgba(255,255,255,0.45);
+    padding:20px;
+    border-radius:30px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 10px 30px rgba(100,180,255,0.15);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .playlist-container{
+        grid-template-columns:1fr;
+    }
+
+    .playlist h2{
+        font-size:38px;
+    }
+
+}
+
+/* POPUP ANIMATION */
+@keyframes popupFade{
+    from{
+        opacity:0;
+        transform:translate(-50%,-45%);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FALLING FLOWERS -->
+<div class="flowers">
+
+    <img src="logo.png" class="flower" style="left:5%; animation-duration:10s;">
+    <img src="logo.png" class="flower" style="left:15%; animation-duration:14s;">
+    <img src="logo.png" class="flower" style="left:30%; animation-duration:12s;">
+    <img src="logo.png" class="flower" style="left:45%; animation-duration:15s;">
+    <img src="logo.png" class="flower" style="left:60%; animation-duration:11s;">
+    <img src="logo.png" class="flower" style="left:75%; animation-duration:13s;">
+    <img src="logo.png" class="flower" style="left:90%; animation-duration:16s;">
+
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">Shivutaro</div>
+    <a href="index.html" class="home-btn">Home</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>Important Message</h1>
+
+    <div class="message-btn" onclick="openPopup()">
+        <img src="cat2.jpg" alt="Cat">
+    </div>
+
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+
+    <div class="popup-header">
+        <h2>Shivutaro</h2>
+        <span class="close" onclick="closePopup()">&times;</span>
+    </div>
+
+    <p>
+        “I feel like sometimes you already care more than you admit to yourself.
+        Maybe you’re still figuring it out, and that’s okay, but I think feelings don’t always arrive loudly.
+        Sometimes love starts quietly, in the comfort, the connection,
+        and the way someone slowly becomes important to you without realizing it.”
+    </p>
+
+</div>
+
+<!-- SPOTIFY PLAYLIST SECTION -->
+<section class="playlist">
+
+    <h2>Shivutaro Playlist</h2>
+
+    <div class="playlist-container">
+
+        <!-- PLAYLIST CARD -->
+        <div class="playlist-card">
+
+            <img src="cat2.jpg" class="playlist-cover" alt="Playlist Cover">
+
+            <div class="playlist-info">
+                <h3>Our Feelings Playlist</h3>
+                <p>Soft songs, memories, comfort, and hidden feelings ✨</p>
+
+                <a href="https://open.spotify.com/playlist/4j31nVPwqaAWEhhNGJH9UE?si=nzU5A80-Tbu4SCenZjGpdA&pi=2xPczd4rRfuje"
+                   target="_blank"
+                   class="spotify-btn">
+                   Open in Spotify
+                </a>
+            </div>
+
+        </div>
+
+        <!-- EMBED PLAYER -->
+        <div class="spotify-player">
+
+            <iframe style="border-radius:20px"
+                src="https://open.spotify.com/embed/playlist/4j31nVPwqaAWEhhNGJH9UE?utm_source=generator"
+                width="100%"
+                height="500"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+function openPopup(){
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
