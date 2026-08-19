@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
 <style>
 
 /* =====================================================
-   GLOBAL
+   BASIC
 ===================================================== */
 
 * {
@@ -22,7 +23,6 @@ html {
 
 body {
     margin: 0;
-    min-height: 100vh;
 
     font-family:
         -apple-system,
@@ -36,11 +36,13 @@ body {
             rgba(190, 230, 255, 0.45),
             transparent 25%
         ),
+
         radial-gradient(
             circle at 85% 80%,
             rgba(255, 220, 235, 0.45),
             transparent 30%
         ),
+
         #f5fbff;
 
     overflow-x: hidden;
@@ -54,6 +56,7 @@ body {
 ===================================================== */
 
 .flowers {
+
     position: fixed;
 
     top: 0;
@@ -70,6 +73,7 @@ body {
 }
 
 .flower-fall {
+
     position: absolute;
 
     top: -60px;
@@ -91,17 +95,21 @@ body {
 @keyframes fall {
 
     0% {
+
         transform:
             translateY(0)
             translateX(0)
             rotate(0deg);
+
     }
 
     100% {
+
         transform:
             translateY(110vh)
             translateX(80px)
             rotate(360deg);
+
     }
 
 }
@@ -200,7 +208,7 @@ body {
 
 
 /* =====================================================
-   HAMBURGER BUTTON
+   HAMBURGER
 ===================================================== */
 
 .menu-button {
@@ -227,8 +235,7 @@ body {
 
     gap: 5px;
 
-    transition:
-        0.25s ease;
+    transition: 0.25s ease;
 
 }
 
@@ -242,8 +249,7 @@ body {
 
     background: #35576d;
 
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 
 }
 
@@ -333,6 +339,7 @@ body {
         opacity 0.25s ease,
         transform 0.25s ease,
         visibility 0.25s ease;
+
 }
 
 .menu.show {
@@ -370,16 +377,17 @@ body {
 
     font-size: 15px;
 
-    transition:
-        0.2s ease;
+    transition: 0.2s ease;
 
 }
 
 .menu a:hover {
 
-    background: #eef8fd;
+    background:
+        #eef8fd;
 
-    color: #1d648c;
+    color:
+        #1d648c;
 
     transform:
         translateX(3px);
@@ -409,8 +417,6 @@ body {
 
     margin-top: 105px;
 
-    padding: 0 15px;
-
     text-align: center;
 
     font-size: 22px;
@@ -423,7 +429,7 @@ body {
 
 
 /* =====================================================
-   CAROUSEL AREA
+   CAROUSEL
 ===================================================== */
 
 .wrapper {
@@ -438,16 +444,9 @@ body {
 
     align-items: center;
 
-    min-height: calc(100vh - 150px);
+    min-height: 70vh;
 
-    padding:
-        30px 0 70px;
 }
-
-
-/* =====================================================
-   CAROUSEL
-===================================================== */
 
 .carousel {
 
@@ -484,8 +483,6 @@ body {
 
 .slide img {
 
-    display: block;
-
     width: 100%;
 
     height: 420px;
@@ -521,8 +518,7 @@ body {
 
     background: #ccc;
 
-    transition:
-        0.3s;
+    transition: 0.3s;
 
     cursor: pointer;
 
@@ -565,7 +561,9 @@ body {
 }
 
 
-/* CAT IMAGE */
+/* CAT IMAGE
+   Changed to cat7.jpg
+===================================================== */
 
 .sorry-cat img {
 
@@ -574,6 +572,8 @@ body {
     height: 100%;
 
     object-fit: contain;
+
+    border-radius: 20px;
 
     filter:
         drop-shadow(
@@ -596,7 +596,7 @@ body {
 
 
 /* =====================================================
-   SORRY SPEECH BUBBLE
+   SORRY BUBBLE
 ===================================================== */
 
 .sorry-bubble {
@@ -607,7 +607,7 @@ body {
 
     bottom: 72px;
 
-    width: 135px;
+    width: 125px;
 
     padding: 9px 12px;
 
@@ -635,8 +635,7 @@ body {
 
     pointer-events: none;
 
-    transition:
-        0.3s ease;
+    transition: 0.3s ease;
 
 }
 
@@ -678,10 +677,6 @@ body {
 }
 
 
-/* =====================================================
-   SORRY CAT FLOATING ANIMATION
-===================================================== */
-
 @keyframes sorryFloat {
 
     0% {
@@ -703,6 +698,119 @@ body {
 
 
 /* =====================================================
+   OLD CAT POPUP
+===================================================== */
+
+.cat-popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 2000;
+
+}
+
+.popup-box {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    width: 280px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.2);
+
+    animation:
+        pop 0.3s ease;
+
+}
+
+@keyframes pop {
+
+    from {
+
+        transform:
+            scale(0.8);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+}
+
+.btn-row {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: space-around;
+
+}
+
+.yes-btn,
+.no-btn {
+
+    padding:
+        8px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+.yes-btn {
+
+    background:
+        #bfe6ff;
+
+    color:
+        #12324a;
+
+}
+
+.no-btn {
+
+    background:
+        #ffd6d6;
+
+    color:
+        #a30000;
+
+}
+
+
+/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -717,7 +825,6 @@ body {
 
     }
 
-
     .logo-img {
 
         width: 40px;
@@ -726,13 +833,11 @@ body {
 
     }
 
-
     .logo {
 
         font-size: 18px;
 
     }
-
 
     .menu {
 
@@ -745,39 +850,27 @@ body {
 
     }
 
-
     .title {
 
         margin-top: 92px;
 
         font-size: 19px;
 
-        line-height: 1.5;
-
     }
-
 
     .wrapper {
 
         min-height:
-            calc(100vh - 140px);
-
-        padding:
-            25px 0 100px;
+            72vh;
 
     }
 
-
     .carousel {
-
-        width:
-            calc(100% - 30px);
 
         max-width:
             330px;
 
     }
-
 
     .slide img {
 
@@ -785,7 +878,6 @@ body {
             400px;
 
     }
-
 
     .sorry-cat {
 
@@ -799,57 +891,15 @@ body {
 
     }
 
-
     .sorry-bubble {
 
         right: 65px;
 
         bottom: 60px;
 
-        width: 110px;
+        width: 105px;
 
         font-size: 11px;
-
-    }
-
-}
-
-
-/* =====================================================
-   VERY SMALL PHONES
-===================================================== */
-
-@media (max-width: 380px) {
-
-    .title {
-
-        font-size: 18px;
-
-    }
-
-    .carousel {
-
-        max-width:
-            310px;
-
-    }
-
-    .slide img {
-
-        height:
-            370px;
-
-    }
-
-    .sorry-cat {
-
-        width: 72px;
-
-        height: 72px;
-
-        right: 10px;
-
-        bottom: 15px;
 
     }
 
@@ -872,15 +922,12 @@ body {
 </div>
 
 
-
 <!-- =====================================================
      NAVBAR
 ===================================================== -->
 
 <header class="topbar">
 
-
-    <!-- LOGO -->
 
     <div class="logo">
 
@@ -895,8 +942,6 @@ body {
 
     </div>
 
-
-    <!-- HAMBURGER -->
 
     <button
         class="menu-button"
@@ -913,7 +958,6 @@ body {
 </header>
 
 
-
 <!-- =====================================================
      DROPDOWN MENU
 ===================================================== -->
@@ -924,83 +968,58 @@ body {
 
     <a href="index.html">
 
-        <span class="menu-icon">
-            🏠
-        </span>
+        <span class="menu-icon">🏠</span>
 
-        <span>
-            Home
-        </span>
+        <span>Home</span>
 
     </a>
 
 
     <a href="gallery.html">
 
-        <span class="menu-icon">
-            🖼️
-        </span>
+        <span class="menu-icon">🖼️</span>
 
-        <span>
-            Gallery
-        </span>
+        <span>Gallery</span>
 
     </a>
 
 
     <a href="index2.html">
 
-        <span class="menu-icon">
-            💌
-        </span>
+        <span class="menu-icon">💌</span>
 
-        <span>
-            Message
-        </span>
+        <span>Message</span>
 
     </a>
 
 
     <a href="sorry.html">
 
-        <span class="menu-icon">
-            🥺
-        </span>
+        <span class="menu-icon">🥺</span>
 
-        <span>
-            I'm Sorry
-        </span>
+        <span>I'm Sorry</span>
 
     </a>
 
 
     <a href="imp.html">
 
-        <span class="menu-icon">
-            🔔
-        </span>
+        <span class="menu-icon">🔔</span>
 
-        <span>
-            Alerts
-        </span>
+        <span>Alerts</span>
 
     </a>
 
 
     <a href="billimart.html">
 
-        <span class="menu-icon">
-            🧠
-        </span>
+        <span class="menu-icon">🧠</span>
 
-        <span>
-            Billi Mart
-        </span>
+        <span>Billi Mart</span>
 
     </a>
 
 </nav>
-
 
 
 <!-- =====================================================
@@ -1014,7 +1033,6 @@ body {
 </div>
 
 
-
 <!-- =====================================================
      CAROUSEL
 ===================================================== -->
@@ -1025,17 +1043,15 @@ body {
         class="carousel"
         id="carousel">
 
-
         <div
             class="slides"
             id="slides">
-
 
             <div class="slide">
 
                 <img
                     src="4.jpeg"
-                    alt="Memory 1">
+                    alt="Memory">
 
             </div>
 
@@ -1044,7 +1060,7 @@ body {
 
                 <img
                     src="5.jpeg"
-                    alt="Memory 2">
+                    alt="Memory">
 
             </div>
 
@@ -1053,15 +1069,12 @@ body {
 
                 <img
                     src="3.jpeg"
-                    alt="Memory 3">
+                    alt="Memory">
 
             </div>
 
-
         </div>
 
-
-        <!-- DOTS -->
 
         <div class="dots">
 
@@ -1087,9 +1100,9 @@ body {
 </div>
 
 
-
 <!-- =====================================================
      FLOATING SORRY CAT
+     CLICK → sorry.html
 ===================================================== -->
 
 <div
@@ -1102,12 +1115,54 @@ body {
 
     </div>
 
+
+    <!-- CHANGED FROM cat10.jpg TO cat7.jpg -->
+
     <img
-        src="cat4.jpg"
+        src="cat7.jpg"
         alt="Sorry cat">
 
 </div>
 
+
+<!-- =====================================================
+     CAT POPUP
+===================================================== -->
+
+<div
+    class="cat-popup"
+    id="catPopup">
+
+    <div class="popup-box">
+
+        <h2>
+            Is it a yes Shivi? 🐱
+        </h2>
+
+        <div class="btn-row">
+
+            <button
+                class="yes-btn"
+                onclick="chooseYes()">
+
+                Yes
+
+            </button>
+
+
+            <button
+                class="no-btn"
+                onclick="chooseNo()">
+
+                No
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <script>
@@ -1133,7 +1188,8 @@ menuButton.addEventListener(
             menu.classList.toggle("show");
 
         menuButton.classList.toggle(
-            "active"
+            "active",
+            isOpen
         );
 
         menuButton.setAttribute(
@@ -1145,9 +1201,7 @@ menuButton.addEventListener(
 );
 
 
-/* =====================================================
-   CLOSE MENU WHEN CLICKING OUTSIDE
-===================================================== */
+/* Close menu when clicking outside */
 
 document.addEventListener(
     "click",
@@ -1176,35 +1230,6 @@ document.addEventListener(
 
 
 /* =====================================================
-   CLOSE MENU AFTER CLICKING A LINK
-===================================================== */
-
-const menuLinks =
-    document.querySelectorAll(".menu a");
-
-menuLinks.forEach(
-    link => {
-
-        link.addEventListener(
-            "click",
-            function() {
-
-                menu.classList.remove(
-                    "show"
-                );
-
-                menuButton.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =====================================================
    CAROUSEL
 ===================================================== */
 
@@ -1223,25 +1248,14 @@ function update() {
         `translateX(${-index * 100}%)`;
 
     dots.forEach(
-        dot => {
-
-            dot.classList.remove(
-                "active"
-            );
-
-        }
+        dot =>
+            dot.classList.remove("active")
     );
 
-    dots[index].classList.add(
-        "active"
-    );
+    dots[index].classList.add("active");
 
 }
 
-
-/* =====================================================
-   SELECT SLIDE
-===================================================== */
 
 function go(i) {
 
@@ -1252,12 +1266,10 @@ function go(i) {
 }
 
 
-/* =====================================================
-   AUTO SLIDES
-===================================================== */
+/* Automatic slideshow */
 
 setInterval(
-    function() {
+    () => {
 
         index =
             (index + 1) %
@@ -1271,7 +1283,7 @@ setInterval(
 
 
 /* =====================================================
-   SWIPE SUPPORT
+   SWIPE
 ===================================================== */
 
 let startX = 0;
@@ -1282,24 +1294,23 @@ const carousel =
 
 carousel.addEventListener(
     "touchstart",
-    function(event) {
+    event => {
 
         startX =
             event.touches[0].clientX;
 
     },
-    {
-        passive: true
-    }
+    { passive: true }
 );
 
 
 carousel.addEventListener(
     "touchend",
-    function(event) {
+    event => {
 
         const endX =
             event.changedTouches[0].clientX;
+
 
         if (
             startX >
@@ -1328,9 +1339,7 @@ carousel.addEventListener(
         }
 
     },
-    {
-        passive: true
-    }
+    { passive: true }
 );
 
 
@@ -1347,17 +1356,12 @@ function createFlower() {
     const flower =
         document.createElement("img");
 
-
-    flower.src =
-        "logo.png";
-
+    flower.src = "logo.png";
 
     flower.classList.add(
         "flower-fall"
     );
 
-
-    /* Random position */
 
     flower.style.left =
         Math.random() *
@@ -1365,16 +1369,12 @@ function createFlower() {
         "px";
 
 
-    /* Random size */
-
     const size =
         Math.random() * 30 + 25;
 
     flower.style.width =
         size + "px";
 
-
-    /* Random speed */
 
     const duration =
         Math.random() * 5 + 5;
@@ -1388,10 +1388,8 @@ function createFlower() {
     );
 
 
-    /* Remove after animation */
-
     setTimeout(
-        function() {
+        () => {
 
             flower.remove();
 
@@ -1437,8 +1435,46 @@ function openSorryPage() {
 
 }
 
-</script>
 
+/* =====================================================
+   OLD CAT POPUP FUNCTIONS
+===================================================== */
+
+function openCatPopup() {
+
+    document.getElementById(
+        "catPopup"
+    ).style.display = "flex";
+
+}
+
+
+function chooseYes() {
+
+    alert(
+        "Yay! 🐱 Shivutaro loves you too!"
+    );
+
+    document.getElementById(
+        "catPopup"
+    ).style.display = "none";
+
+}
+
+
+function chooseNo() {
+
+    alert(
+        "Hmm... the cat is sad 😿"
+    );
+
+    document.getElementById(
+        "catPopup"
+    ).style.display = "none";
+
+}
+
+</script>
 
 </body>
 </html>
